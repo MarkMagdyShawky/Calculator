@@ -4,17 +4,23 @@ import 'package:flutter/material.dart';
 class CustomNumberButton extends StatelessWidget {
   final String number;
   final Color btnColor;
-  const CustomNumberButton({super.key, required this.number, required this.btnColor});
+  final Function callback;
+  const CustomNumberButton({
+    super.key,
+    required this.number,
+    required this.btnColor,
+    required this.callback,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(10),
+      margin: EdgeInsets.all(8),
       child: SizedBox(
         height: 70,
         width: 70,
         child: MaterialButton(
-          onPressed: () {},
+          onPressed: () => callback(number),
           child: Text(
             number,
             style: TextStyle(fontSize: 23),
